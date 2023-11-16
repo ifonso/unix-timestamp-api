@@ -2,7 +2,6 @@ import Vapor
 import Dispatch
 import Logging
 
-/// This extension is temporary and can be removed once Vapor gets this support.
 private extension Vapor.Application {
     static let baseExecutionQueue = DispatchQueue(label: "vapor.codes.entrypoint")
     
@@ -35,6 +34,7 @@ enum Entrypoint {
             app.logger.report(error: error)
             throw error
         }
+        
         try await app.runFromAsyncMainEntrypoint()
     }
 }
